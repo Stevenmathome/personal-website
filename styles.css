@@ -10,6 +10,7 @@
   --link-hover: #0b3d82;
   --rule: #e6e6e6;
   --max-width: 680px;
+  --layout-width: 900px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 }
@@ -43,9 +44,18 @@ body {
   padding: 4rem 1.25rem 2rem;
 }
 
-main {
-  max-width: var(--max-width);
+.layout {
+  display: flex;
+  gap: 3rem;
+  max-width: var(--layout-width);
   margin: 0 auto;
+  align-items: flex-start;
+}
+
+main {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: var(--max-width);
 }
 
 /* Header */
@@ -62,12 +72,35 @@ header h1 {
   font-size: 1.05rem;
 }
 
+/* Intro row: text on the left, photo on the top right */
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.intro-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+}
+
 /* Sections */
 section {
   margin-top: 2.5rem;
 }
 
-section h2 {
+section h2,
+.reading h2 {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -129,9 +162,47 @@ code {
   border-radius: 3px;
 }
 
+/* Currently reading sidebar */
+.reading {
+  flex: 0 0 150px;
+  width: 150px;
+}
+
+.reading ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reading li {
+  margin-bottom: 1.5rem;
+}
+
+.reading img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--rule);
+}
+
+.reading .book-title {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.reading .book-author {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
 /* Footer */
 footer {
-  max-width: var(--max-width);
+  max-width: var(--layout-width);
   margin: 3.5rem auto 0;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
@@ -139,6 +210,28 @@ footer {
   flex-wrap: wrap;
   gap: 1.25rem;
   font-size: 0.95rem;
+}
+
+/* Stack the sidebar below the content on narrower screens */
+@media (max-width: 760px) {
+  .layout {
+    flex-direction: column;
+    gap: 0;
+  }
+  .reading {
+    flex: none;
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+  .reading ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .reading li {
+    width: 110px;
+    margin-bottom: 0;
+  }
 }
 
 /* Small screens */
