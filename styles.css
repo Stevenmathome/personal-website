@@ -86,9 +86,9 @@ header h1 {
 
 .avatar {
   flex: 0 0 auto;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
   object-fit: cover;
   border: 1px solid var(--rule);
   background: var(--rule);
