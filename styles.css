@@ -111,6 +111,24 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Sub-page bits (project pages, 404) */
+.back {
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+}
+
+.about p + p {
+  margin-top: 1rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--rule);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
 /* Footer */
 footer {
   max-width: var(--max-width);
